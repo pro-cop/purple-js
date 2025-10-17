@@ -1,35 +1,14 @@
 'use strict'
-const NameList = [
-    {id: 1, name: "Вася"},
-    {id: 2, name: "Петя"},
-    {id: 1, name: "Вася"},
-];
+function ageValidation(date){
+    const birthDate = new Date(date)
+    const now = new Date()
+    now.setHours(0, 0, 0, 0)
+    birthDate.setHours(0, 0, 0, 0)
+    const checkDate = new Date(now.getFullYear()-14, now.getMonth(), now.getDate());
+    return  checkDate.getTime() >= birthDate.getTime();
 
-
-
-
-
-    let mySet = new Set()
-    let arr = []
-    NameList.forEach(v=>mySet.add(v.id))
-    mySet.forEach(setItem=>arr.push(NameList.find(originalItem=>originalItem.id===setItem)))
-    console.log(arr)
-
-
-
-console.log('Hello world!!!')
-
-
-function throwDice(diceType) {
-    const diceTypeAllowed = new Set(["D4", "D6", "D8", "D10", "D12", "D16", "D20"])
-    if (!diceTypeAllowed.has(diceType.toUpperCase())) {
-        console.error('Invalid dice type')
-        return null
-    }
-
-    const grainNumber = parseInt(diceType.slice(1))
-
-    return Math.floor( Math.random() * grainNumber)  + 1
 }
 
-console.log("throwDice", throwDice('D20'))
+console.log(ageValidation("2011-10-16"))
+console.log(ageValidation("2011-10-17"))
+console.log(ageValidation("2011-10-18"))
